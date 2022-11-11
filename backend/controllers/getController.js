@@ -1,17 +1,18 @@
+const asyncHandler = require('express-async-handler')
+
 // @desc Get Goals
 // @route GET /api/goals
 // @access Private
-function getGoals(req, res) {
+const getGoals =asyncHandler(async (req, res)=>{
     res.status(200).json({ message: 'get goals' })
-}
+})
 
 // @desc Set Goal
 // @route POST /api/goals
 // @access Private
-function setGoal(req, res) {
+const setGoal =asyncHandler(async (req, res) => {
 
-    // console.log(`req to body: ${Object.keys(req.body.message)}`)
-    console.log(`req to body: ${req.body}`)
+    console.log(req.body)
 
     if(!req.body.text){
         res.status(400)
@@ -20,23 +21,23 @@ function setGoal(req, res) {
 
     res.status(200).json({message:'Set goal'})
 
-}
+})
 
 
 // @desc Update Goals
 // @route PUT /api/goals/:id
 // @access Private
-function updateGoal(req, res) {
+const updateGoal= asyncHandler(async (req, res) =>{
     res.status(200).json({message:`Update goal ${req.params.id}`})
-}
+})
 
 
 // @desc Delete Goal
 // @route DELETE /api/goals/:id
 // @access Private
-function deleteGoal(req, res) {
+const deleteGoal= asyncHandler(async (req, res)=>{
     res.status(200).json({ message: `delete goal ${req.params.id}` })
-}
+})
 
 
 module.exports = {
